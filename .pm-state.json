@@ -1,7 +1,7 @@
 {
   "project": "warcraft-clone",
   "request": "Warcraft 1 clone, 3D characters, running entirely in the browser. Phase 1 scope: a single simple skirmish mission only — one map, basic unit movement and combat. No full campaign, tech tree, resource economy depth, multiplayer, or AI opponent complexity beyond what a minimal skirmish needs.",
-  "phase": "prd",
+  "phase": "design",
   "iteration": 1,
   "trello": {
     "boardId": "6ac7a350c1198d591f3b55ea",
