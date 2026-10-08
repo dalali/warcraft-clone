@@ -1,0 +1,22 @@
+# Environment
+.env
+*.local
+
+# Docker
+.docker/
+
+# Editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Node
+node_modules/
+dist/
+.next/
+build/
+*.log
+npm-debug.log*
+yarn-error.log*
