@@ -1,0 +1,38 @@
+{
+  "project": "warcraft-clone",
+  "request": "Warcraft 1 clone, 3D characters, running entirely in the browser. Phase 1 scope: a single simple skirmish mission only — one map, basic unit movement and combat. No full campaign, tech tree, resource economy depth, multiplayer, or AI opponent complexity beyond what a minimal skirmish needs.",
+  "phase": "prd",
+  "iteration": 1,
+  "trello": {
+    "boardId": "6ac7a350c1198d591f3b55ea",
+    "boardUrl": "https://trello.com/b/ExyaFSOF",
+    "lists": {
+      "backlog": "6ac7a3514d3ba18096906a17",
+      "analysis": "6ac7a351f33e56de3121250a",
+      "design": "6ac7a3521a5789922aa938b1",
+      "architecture": "6ac7a3526bbb161f35906083",
+      "coding": "6ac7a352821f8ecfbf5deaa1",
+      "review": "6ac7a35393fb75e73c7a049d",
+      "test": "6ac7a353b195afa11645eb8e",
+      "security": "6ac7a354f01e659b400afecf",
+      "done": "6ac7a354636be866669cd0c1"
+    },
+    "cards": {
+      "analysis": "6ac7a39eb43a8e1b514cebea",
+      "design": "6ac7a39f46f52cde206562f0",
+      "architecture": "6ac7a39f77ca936d56a32465",
+      "coding": "6ac7a3a03704bf49dafd31e4",
+      "code-review": "6ac7a3a07e6d7b577cd01061",
+      "qa": "6ac7a3a1f94f31403a238078",
+      "security": "6ac7a3a2376bb0de2df8ac17"
+    }
+  },
+  "branch": "main",
+  "artifacts": {
+    "prd": "docs/PRD.md",
+    "design": "docs/design.md",
+    "architecture": "docs/architecture.md"
+  },
+  "issues": [],
+  "status": "running"
+}
