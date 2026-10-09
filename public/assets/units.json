@@ -1,0 +1,4 @@
+{
+  "melee":  { "maxHp": 50, "dmg": 8, "range": 1.2, "speed": 3.0, "attackInterval": 1.0, "aggroRadius": 5, "leashRange": 8 },
+  "ranged": { "maxHp": 30, "dmg": 5, "range": 4.0, "speed": 3.0, "attackInterval": 1.2, "aggroRadius": 6, "leashRange": 8 }
+}

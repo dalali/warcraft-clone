@@ -1,0 +1,162 @@
+:root {
+  --color-player: #3B82C4;
+  --color-enemy: #C0472B;
+  --color-terrain: #5A6B47;
+  --color-terrain-dirt: #7A6450;
+  --color-obstacle-rock: #8A8A85;
+  --color-obstacle-tree: #2F4A33;
+  --color-selection-ring: #F5E663;
+  --color-attack-ring: #E8463B;
+  --color-hp-healthy: #4CAF50;
+  --color-hp-wounded: #E0B23A;
+  --color-hp-critical: #D9453D;
+  --color-hud-bg: rgba(27, 31, 36, 0.85);
+  --color-hud-text: #E8E8E8;
+  --color-victory: #D4AF37;
+  --color-defeat: #8C3A3A;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #000;
+}
+
+#game {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  display: block;
+}
+
+#hud-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#status-readout {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 14px;
+  color: var(--color-hud-text);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  pointer-events: auto;
+}
+
+#selection-panel {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 560px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--color-hud-bg);
+  border-radius: 4px;
+  pointer-events: auto;
+}
+
+.unit-slot {
+  width: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.unit-slot .portrait {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background: var(--color-player);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.unit-slot[data-faction="enemy"] .portrait {
+  background: var(--color-enemy);
+}
+
+.hp-bar {
+  width: 56px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.hp-fill {
+  height: 100%;
+  background: var(--color-hp-healthy);
+}
+
+#end-state-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  pointer-events: auto;
+}
+
+#end-state-overlay .headline {
+  font-size: 64px;
+  font-weight: bold;
+}
+
+#end-state-overlay .headline.victory {
+  color: var(--color-victory);
+}
+
+#end-state-overlay .headline.defeat {
+  color: var(--color-defeat);
+}
+
+#end-state-overlay .subtext {
+  font-size: 18px;
+  color: #ccc;
+  margin-top: 8px;
+}
+
+#end-state-overlay .replay-hint {
+  font-size: 14px;
+  color: #888;
+  margin-top: 16px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Cursor states (design §4.3) — applied by input/inputController.js in a later slice */
+.cursor-move {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="2,2 14,8 2,14 5,8" fill="white" stroke="black" stroke-width="1"/></svg>') 8 8, pointer;
+}
+
+.cursor-attack {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><circle cx="8" cy="8" r="6" fill="none" stroke="red" stroke-width="2"/><line x1="8" y1="0" x2="8" y2="16" stroke="red" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="red" stroke-width="1"/></svg>') 8 8, crosshair;
+}

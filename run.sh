@@ -20,6 +20,11 @@ case "$CMD" in
   logs)
     docker compose logs -f "${2:-}"
     ;;
+  logs-dump)
+    echo "📄 Dumping logs to logs-dump.log..."
+    docker compose logs "${2:-}" > logs-dump.log 2>&1
+    echo "✓ Wrote logs-dump.log"
+    ;;
   build)
     echo "⚙ Building..."
     docker compose build
@@ -46,7 +51,8 @@ case "$CMD" in
     echo "  start|up      Start all services"
     echo "  stop|down     Stop all services"
     echo "  restart       Restart all services"
-    echo "  logs [svc]    Tail logs (optionally for one service)"
+    echo "  logs [svc]    Tail logs (optionally for one service)
+  logs-dump [svc]  Dump logs to logs-dump.log (optionally for one service)"
     echo "  build         Build Docker images"
     echo "  status        Show container status"
     echo "  test [args]   Run test suite"

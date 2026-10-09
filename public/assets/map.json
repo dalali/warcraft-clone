@@ -1,0 +1,26 @@
+{
+  "name": "Skirmish Valley",
+  "tileSize": 1,
+  "width": 48,
+  "height": 48,
+  "ground": { "color": "#5A6B47", "dirtColor": "#7A6450" },
+  "obstacles": [
+    { "type": "tree", "x": 18, "z": 22, "radius": 1.0 },
+    { "type": "tree", "x": 20, "z": 23, "radius": 1.0 },
+    { "type": "tree", "x": 24, "z": 18, "radius": 1.0 },
+    { "type": "rock", "x": 30, "z": 14, "radius": 1.5 },
+    { "type": "rock", "x": 22, "z": 30, "radius": 1.2 }
+  ],
+  "players": [
+    { "type": "melee",  "x": 6,  "z": 40 },
+    { "type": "melee",  "x": 8,  "z": 42 },
+    { "type": "ranged", "x": 5,  "z": 44 },
+    { "type": "ranged", "x": 9,  "z": 45 }
+  ],
+  "enemies": [
+    { "type": "melee",  "x": 40, "z": 8 },
+    { "type": "melee",  "x": 42, "z": 7 },
+    { "type": "ranged", "x": 44, "z": 6, "aggroRadius": 7, "leashRange": 10 },
+    { "type": "ranged", "x": 41, "z": 10 }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "project": "warcraft-clone",
   "request": "Warcraft 1 clone, 3D characters, running entirely in the browser. Phase 1 scope: a single simple skirmish mission only — one map, basic unit movement and combat. No full campaign, tech tree, resource economy depth, multiplayer, or AI opponent complexity beyond what a minimal skirmish needs.",
-  "phase": "coding",
+  "phase": "done",
   "iteration": 1,
   "trello": {
     "boardId": "6ac7a350c1198d591f3b55ea",
@@ -24,15 +24,56 @@
       "coding": "6ac7a3a03704bf49dafd31e4",
       "code-review": "6ac7a3a07e6d7b577cd01061",
       "qa": "6ac7a3a1f94f31403a238078",
-      "security": "6ac7a3a2376bb0de2df8ac17"
+      "security": "6ac7a3a2376bb0de2df8ac17",
+      "coding-1-task-1": "6ac7a9ab239a2631b4cade3c",
+      "coding-1-task-2": "6ac7a9ac9e47037d0187d9e8",
+      "coding-1-task-3": "6ac7a9ad9ff857632cbdeaaa",
+      "coding-1-task-4": "6ac7a9ad30512f509b352c53",
+      "coding-1-task-5": "6ac7a9ad468e046a20b5bda4"
     }
   },
-  "branch": "main",
+  "branch": "feature/mvp-iteration-1",
   "artifacts": {
     "prd": "docs/PRD.md",
     "design": "docs/design.md",
     "architecture": "docs/architecture.md"
   },
-  "issues": [],
-  "status": "running"
+  "issues": [
+    {
+      "id": "qa-1-camera-pan-void",
+      "source": "qa",
+      "severity": "blocking",
+      "status": "fixed",
+      "fixCommit": "43f1fd4",
+      "file": "public/src/view/camera.js",
+      "summary": "clampPanTarget() clamped the look-at point to the raw map rectangle without insetting by the camera's ground-footprint half-extents, so panning revealed the void beyond the map edge. Fixed by insetting pan clamp by frustum footprint (43f1fd4). Inset math confirmed correct by resume QA."
+    },
+    {
+      "id": "qa-1-camera-pan-dead",
+      "source": "qa",
+      "severity": "blocking",
+      "status": "fixed",
+      "fixCommit": "b872299",
+      "file": "public/src/view/camera.js",
+      "summary": "Regression from 43f1fd4: camera distance band (default 60/MIN 20/MAX 100) made the ground footprint 3-5x the 48-map, so footprintInsets halfW (24.62 at MIN_DISTANCE=20, 16:9) exceeded map half 24 at EVERY zoom -> clampInset lo>hi fallback fired -> horizontal keyboard pan was a permanent no-op. Fixed (b872299) by recalibrating distances to MIN=10/DEFAULT=15/MAX=19: halfW now 12.31/18.46/23.39 at 16:9 (all <= map half 24; strict pan room at MIN/DEFAULT; MAX frames whole map). +2 regression tests assert inset < map half. Verified headlessly; 58/58 tests pass."
+    }
+  ],
+  "security": {
+    "verdict": "PASS",
+    "blocking": [],
+    "npmAudit": "0 vulnerabilities across 69 packages",
+    "hardeningSuggestions": [
+      "Dockerfile: add USER node (currently runs as root)",
+      "Set NODE_ENV=production in Dockerfile/compose",
+      "Commit package-lock.json and switch Dockerfile to npm ci for reproducibility",
+      "Add baseline security headers (X-Content-Type-Options, CSP) if a backend is ever added",
+      "docker-compose bind-mounts full repo (.:/app) - fine for local dev only",
+      ".env.example ships DEBUG=true - harmless today, flag if debug logging is added later"
+    ]
+  },
+  "qaNonBlocking": [
+    "Edge-scroll pan not implemented (keyboard/arrow pan only) - PRD 4.6 phrases it 'keyboard arrows OR edge-scroll' so keyboard satisfies the binding AC. Deferred to a later phase.",
+    "No guard blocking unit orders after win/lose end-state - low risk (on lose, no player units remain; on win, moving survivors is harmless). Camera pan/zoom intentionally stays active per design 6/8-8. Flagged for a cheap one-line follow-up, not blocking."
+  ],
+  "status": "done"
 }

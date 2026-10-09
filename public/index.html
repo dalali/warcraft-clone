@@ -2,10 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>warcraft-clone</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="importmap">
+    { "imports": { "three": "/vendor/three.module.js" } }
+  </script>
 </head>
 <body>
-  <h1>warcraft-clone</h1>
-  <p>Scaffold placeholder — skirmish mission coming in the Coding phase.</p>
+  <canvas id="game"></canvas>
+
+  <div id="hud-layer">
+    <div id="status-readout">Enemies: 0/0   Your Units: 0/0</div>
+
+    <div id="selection-panel" class="hidden">
+      <!-- repeated per selected unit, max 6 -->
+      <div class="unit-slot" data-faction="player" data-type="melee">
+        <div class="portrait"></div>
+        <div class="hp-bar"><div class="hp-fill" style="width:100%"></div></div>
+      </div>
+    </div>
+
+    <div id="end-state-overlay" class="hidden">
+      <div class="headline">VICTORY</div>
+      <div class="subtext">All enemy forces destroyed.</div>
+      <div class="replay-hint">Refresh the page to play again.</div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
